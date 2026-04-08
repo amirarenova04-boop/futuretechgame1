@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Будущее технологий</title>
+<style>
+/* Общие стили */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: url('https://images.unsplash.com/photo-1581092795369-c417d933f1b0?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    transition: background 0.5s, color 0.5s;
+}
+
+header {
+    background: rgba(0,0,0,0.7);
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #ff69b4;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    0% {text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4;}
+    100% {text-shadow: 0 0 20px #ff1493, 0 0 30px #ff1493;}
+}
+
+/* Меню вкладок */
+nav {
+    display: flex;
+    justify-content: center;
+    background: rgba(0,0,0,0.6);
+}
+
+nav button {
+    background: transparent;
+    border: none;
+    color: #ff69b4;
+    font-size: 1.2em;
+    margin: 0 15px;
+    padding: 15px 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+nav button:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #ff69b4;
+}
+
+/* Секция контента */
+section {
+    display: none;
+    padding: 40px;
+    background: rgba(0,0,0,0.6);
+    margin: 20px;
+    border-radius: 15px;
+}
+
+/* Активная вкладка */
+section.active {
+    display: block;
+}
+
+/* Кнопки теста */
+.test-button {
+    padding: 15px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #ff69b4;
+    color: #fff;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.test-button:hover {
+    background: #ff1493;
+}
+
+/* Стиль видео */
+.video-container iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    border-radius: 15px;
+}
+
+/* Регистрация */
+input, button.register-btn {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+    border: none;
+    font-size: 1em;
+}
+
+button.register-btn {
+    background: #ff69b4;
+    color: #fff;
+    cursor: pointer;
+}
+
+button.register-btn:hover {
+    background: #ff1493;
+}
+
+/* Темный/светлый режим */
+.dark-mode {
+    background: #111 !important;
+    color: #fff !important;
+}
+
+.light-mode {
+    background: #fff !important;
+    color: #111 !important;
+}
+
+.toggle-theme {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background: #ff69b4;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.toggle-theme:hover {
+    background: #ff1493;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Будущее технологий</h1>
+</header>
+
+<nav>
+    <button onclick="showSection('robots')">Роботы</button>
+    <button onclick="showSection('smart-home')">Умный дом</button>
+    <button onclick="showSection('space')">Космос</button>
+    <button onclick="showSection('test')">Тест</button>
+    <button onclick="showSection('videos')">Видео</button>
+    <button onclick="showSection('register')">Регистрация</button>
+</nav>
+
+<button class="toggle-theme" onclick="toggleTheme()">Темный/Светлый режим</button>
+
+<!-- Раздел Роботы -->
+<section id="robots">
+    <h2>Роботы</h2>
+    <img src="https://images.unsplash.com/photo-1603052875813-3f5ad1542d87?auto=format&fit=crop&w=800&q=80" alt="Роботы" style="width:100%;border-radius:15px;">
+    <p>Роботы будущего будут выполнять сложные задачи, помогать в медицине, образовании и даже творчестве. Их использование изменит работу людей, сделав её более безопасной и эффективной.</p>
+</section>
+
+<!-- Раздел Умный дом -->
+<section id="smart-home">
+    <h2>Умный дом</h2>
+    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80" alt="Умный дом" style="width:100%;border-radius:15px;">
+    <p>Умные дома будут автоматизировать бытовые процессы: управление светом, климатом, безопасностью. Это повысит комфорт и безопасность жизни, а также снизит энергозатраты.</p>
+</section>
+
+<!-- Раздел Космос -->
+<section id="space">
+    <h2>Космос</h2>
+    <img src="https://images.unsplash.com/photo-1581092795369-c417d933f1b0?auto=format&fit=crop&w=800&q=80" alt="Космос" style="width:100%;border-radius:15px;">
+    <p>Исследование космоса откроет новые возможности для человечества: колонизация планет, новые источники энергии и материалы, а также новые технологии для жизни на Земле.</p>
+</section>
+
+<!-- Раздел Тест -->
+<section id="test">
+    <h2>Какая технология будущего тебе подходит?</h2>
+    <p>Выбери один вариант:</p>
+    <button class="test-button" onclick="showResult('A')">A — Любишь анализировать</button>
+    <button class="test-button" onclick="showResult('B')">B — Любишь играть</button>
+    <button class="test-button" onclick="showResult('C')">C — Любишь космос</button>
+    <p id="test-result" style="margin-top:20px;font-size:1.2em;"></p>
+</section>
+
+<!-- Раздел Видео -->
+<section id="videos">
+    <h2>Видео про технологии</h2>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/5MgBikgcWnY" title="YouTube video" allowfullscreen></iframe>
+    </div>
+</section>
+
+<!-- Раздел Регистрация -->
+<section id="register">
+    <h2>Регистрация</h2>
+    <input type="text" id="username" placeholder="Имя пользователя"><br>
+    <input type="password" id="password" placeholder="Пароль"><br>
+    <button class="register-btn" onclick="registerUser()">Зарегистрироваться</button>
+    <p id="register-msg" style="margin-top:10px;"></p>
+</section>
+
+<script>
+// Показать выбранную секцию
+function showSection(id){
+    document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+
+// Тест
+function showResult(choice){
+    let resultText = '';
+    if(choice==='A') resultText = 'Тебе подходят технологии анализа данных и искусственный интеллект!';
+    if(choice==='B') resultText = 'Тебе подходят игровые технологии и виртуальная реальность!';
+    if(choice==='C') resultText = 'Тебе подходит космическая индустрия и астрономия!';
+    document.getElementById('test-result').textContent = resultText;
+}
+
+// Регистрация с LocalStorage
+function registerUser(){
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    if(username && password){
+        localStorage.setItem('username', username);
+        localStorage.setItem('password', password);
+        document.getElementById('register-msg').textContent = 'Регистрация успешна!';
+    } else {
+        document.getElementById('register-msg').textContent = 'Пожалуйста, заполните все поля.';
+    }
+}
+
+// Темная/светлая тема
+function toggleTheme(){
+    document.body.classList.toggle('dark-mode');
+}
+</script>
+
+</body>
+</html>
